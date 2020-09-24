@@ -1,0 +1,41 @@
+{
+  "name": "ip-address-tracker",
+  "version": "1.0.0",
+  "description": "![Design preview for the IP Address Tracker coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --w --mode production",
+    "dev": "webpack --w --mode development",
+    "server": "webpack-dev-server --mode production --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roywillynson/Ip-Address-Tracker.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roywillynson/Ip-Address-Tracker/issues"
+  },
+  "homepage": "https://github.com/roywillynson/Ip-Address-Tracker#readme",
+  "dependencies": {
+    "node": "^14.11.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "core-js": "^3.6.5",
+    "css-loader": "^4.3.0",
+    "file-loader": "^6.1.0",
+    "html-webpack-plugin": "^4.4.1",
+    "regenerator-runtime": "^0.13.7",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

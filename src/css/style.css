@@ -1,0 +1,156 @@
+:root {
+  --white: white;
+  --border-radios-default: 10px;
+  --dark-grey: hsl(0, 0%, 59%);
+  --very-dark-grey: hsl(0, 0%, 17%);
+  --clear-very-dark-grey: hsl(0, 0%, 23%);
+}
+
+h1 {
+  color: var(--white);
+  text-align: center;
+  font-weight: 700;
+}
+
+/* RESPONSIVE FOR DESKTOP */
+
+body {
+  min-height: 100vh;
+  font-family: "Rubik", sans-serif;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+.search-container {
+  background-image: url(/public/images/pattern-bg.png);
+  background-size: cover;
+  max-height: 300px;
+}
+
+.container-center {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 2em;
+  box-sizing: border-box;
+}
+
+.info-container {
+  min-width: 80%;
+  padding: 0 2em;
+}
+
+#formulario {
+  min-width: 40%;
+}
+
+/* Formulario */
+.search {
+  display: flex;
+  overflow: hidden;
+  border-radius: var(--border-radios-default);
+}
+
+.btn-search,
+#input-domain-ip {
+  padding: 15px;
+  border: none;
+}
+
+#input-domain-ip {
+  width: 88%;
+}
+
+.btn-search {
+  width: 12%;
+  background-color: var(--very-dark-grey);
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.2s ease-out;
+}
+
+.btn-search:hover {
+  background-color: var(--clear-very-dark-grey);
+}
+
+/* informacion */
+.info-container {
+  background-color: var(--white);
+  padding: 30px 25px;
+  box-sizing: border-box;
+  border-radius: var(--border-radios-default);
+  display: flex;
+  position: relative;
+  z-index: 100;
+  margin-top: 0;
+  transform: translateY(50%);
+  box-shadow: 0 20px 30px 2px rgba(0, 0, 0, 0.1);
+}
+
+.info__column {
+  flex: 1;
+}
+
+.info__column:nth-child(n + 2) {
+  border-left: 2px solid hsla(0, 0%, 59%, 0.2);
+  padding: 0 20px;
+}
+
+.info__column > span {
+  display: block;
+}
+
+.info__title {
+  font-size: 0.75em;
+  font-weight: 500;
+  margin-bottom: 0.75em;
+  color: var(--dark-grey);
+}
+
+.info__description {
+  font-weight: 700;
+  color: var(--very-dark-grey);
+}
+
+/* Mapa */
+
+#mapa {
+  position: absolute;
+
+  min-height: 100vh;
+  width: 100vw;
+  z-index: 10;
+}
+
+/* RESPONSIVE FOR MOBILE */
+
+@media only screen and (max-width: 400px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .info-container {
+    flex-direction: column;
+    padding: 25px;
+    margin-top: -150px;
+  }
+
+  .info__column:nth-child(n + 2) {
+    border-left: none;
+    padding: 10px 0;
+  }
+
+  .info__column {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .info__title {
+    font-size: 0.65em;
+  }
+
+  #formulario {
+    min-width: 100%;
+  }
+}
