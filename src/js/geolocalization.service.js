@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const axios = require("axios").default;
 
 // INFORMACION DE LA API
 const { apiKey, url } = require("./geolocalization.config");
@@ -6,14 +6,12 @@ const { apiKey, url } = require("./geolocalization.config");
 // GET : Obtiene geolocalizacion por el ip proporcionado
 async function getGeolocalizationByIp(ip) {
   try {
-    let response = await fetch(`${url}?apiKey=${apiKey}&ipAddress=${ip}`);
-
-    let result = await response.json();
+    let response = await axios.get(`${url}?apiKey=${apiKey}&ipAddress=${ip}`);
 
     //validar ipv4 and ipv5
-    if (result.messages) throw new Error("Debe entrar un ipv6 o ipv4");
+    if (response.data.messages) throw new Error("Debe entrar un ipv6 o ipv4");
 
-    return result;
+    return response.data;
   } catch (error) {
     console.log(error.message);
   }
@@ -22,11 +20,10 @@ async function getGeolocalizationByIp(ip) {
 // GET : Obtiene mi ip
 async function getMyGeolocalization() {
   try {
-    let response = await fetch(`${url}?apiKey=${apiKey}`);
+    let response = await axios.get(`${url}?apiKey=${apiKey}`);
 
-    let result = await response.json();
-
-    return result;
+    console.log(response);
+    return response.data;
   } catch (error) {
     console.log(error.message);
   }
