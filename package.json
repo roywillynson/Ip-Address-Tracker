@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/roywillynson/Ip-Address-Tracker.git"
   },
-  "author": "",
+  "author": "Roy Willynson <roywillinsondelorbemedina@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/roywillynson/Ip-Address-Tracker/issues"
@@ -34,6 +34,7 @@
     "html-webpack-plugin": "^4.4.1",
     "regenerator-runtime": "^0.13.7",
     "style-loader": "^1.2.1",
+    "vercel": "^20.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

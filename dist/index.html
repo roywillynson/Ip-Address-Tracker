@@ -1,8 +1,90 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"/><title>Frontend Mentor | IP Address Tracker</title><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous"/><link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/><style>.attribution {
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+  <title>Frontend Mentor | IP Address Tracker</title>
+  <!-- FONTS  -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- NORMALIZE -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" />
+  <!-- LEAFLET CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <style>
+    .attribution {
       font-size: 11px;
       text-align: center;
     }
 
     .attribution a {
       color: hsl(228, 45%, 44%);
-    }</style></head><body><div class="search-container"><div class="container-center"><form id="formulario"><div><h1>IP Address Tracker</h1></div><div class="search"><input id="input-domain-ip" placeholder="Search for any IP address or domain"/> <button type="submit" class="btn-search"><span>></span></button></div></form><div class="info-container"><div class="info__column"><span class="info__title">IP ADDRESS</span> <span class="info__description ip-address">8.8.8.8</span></div><div class="info__column"><span class="info__title">LOCATION</span> <span class="info__description location">Brooklyn NY,10001</span></div><div class="info__column"><span class="info__title">TIMEZONE</span> <span class="info__description timezone">UTC - 05:00</span></div><div class="info__column"><span class="info__title">ISP</span> <span class="info__description isp">SpaceX Starlink</span></div></div></div></div><div id="mapa"></div><script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script><script src="runtime.bundle.js"></script><script src="vendors.bundle.js"></script><script src="app.bundle.js"></script></body></html>
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Mapa -->
+
+  <div class="search-container">
+    <div class="container-center">
+      <!-- SEARCH DOMAIN OR IP -->
+      <form id="formulario">
+        <div>
+          <h1>IP Address Tracker</h1>
+        </div>
+        <div class="search">
+          <input type="text" id="input-domain-ip" placeholder="Search for any IP address or domain" />
+          <button type="submit" class="btn-search">
+            <span>></span>
+          </button>
+        </div>
+      </form>
+      <!-- INFORMACION DE LA IP -->
+
+      <div class="info-container">
+        <div class="info__column">
+          <span class="info__title">IP ADDRESS</span>
+          <span class="info__description ip-address">8.8.8.8</span>
+        </div>
+        <div class="info__column">
+          <span class="info__title">LOCATION</span>
+          <span class="info__description location">Brooklyn NY,10001</span>
+        </div>
+        <div class="info__column">
+          <span class="info__title">TIMEZONE</span>
+          <span class="info__description timezone">UTC - 05:00</span>
+          <!-- add offset value dynamically using the API -->
+        </div>
+        <div class="info__column">
+          <span class="info__title">ISP</span>
+          <span class="info__description isp">SpaceX Starlink</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="mapa"></div>
+  <!--
+  <div class="attribution">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Roy
+      Willynson Del Orbe Medina</a>.
+  </div>
+  -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+<script src="runtime.bundle.js"></script><script src="vendors.bundle.js"></script><script src="app.bundle.js"></script></body>
+
+</html>
