@@ -2,4 +2,4 @@
 
 live preview: https://ip-address-tracker-eight-xi.vercel.app
 
-![Design preview for the IP Address Tracker coding challenge](./design/desktop-preview.jpg)
+![Design preview for the IP Address Tracker coding challenge](./public/design/desktop-preview.jpg)
