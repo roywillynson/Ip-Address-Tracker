@@ -1,9 +1,9 @@
-import "../css/style.css";
+import "./css/style.css";
 
 const {
   getMyGeolocalization,
   getGeolocalizationByIp,
-} = require("./geolocalization.service");
+} = require("./services/geolocalization.service");
 
 const { changeMap, initMap } = require("./map");
 
@@ -29,11 +29,9 @@ async function init() {
  *********************************/
 async function initGeolocalization() {
   // Traer mi ip
-  const {
-    ip,
-    location: { lat, lng, city, region, postalCode, timezone }, // Info de la location
-    isp,
-  } = await getMyGeolocalization();
+  const { ip, location, isp } = await getMyGeolocalization();
+
+  const { lat, lng, city, region, postalCode, timezone } = location; // Info de la location
 
   // Objeto informacion ip
   let geolocalization = {
@@ -53,9 +51,10 @@ async function changeGeolocalization(e) {
   e.preventDefault();
   // Obtener valor del input
   const searchIPOrDomain = document.getElementById("input-domain-ip").value;
+
   //Validar si esta vacio el campo
   if (!searchIPOrDomain) {
-    console.log("Campo no puede estar vacio");
+    alert("Campo no puede estar vacio");
     return;
   }
 
@@ -82,18 +81,16 @@ function updateInfoGeolocalization(geolocalization) {
 }
 
 // Buscar geolocalizacion por ip
-async function searchInfoGeolocalizationByIP(ipAddress) {
+async function searchInfoGeolocalizationByIP(ipAddress = "") {
   //Obtener geolocalizacion
   const geolocalizacion = await getGeolocalizationByIp(ipAddress);
 
   //Validar si no encontro la geolozalizacion
   if (!geolocalizacion) return;
 
-  const {
-    ip,
-    location: { lat, lng, city, region, postalCode, timezone }, // Info de la location
-    isp,
-  } = geolocalizacion;
+  const { ip, location, isp } = geolocalizacion;
+
+  const { lat, lng, city, region, postalCode, timezone } = location; // Info de la location
 
   // Objeto informacion ip
   let newGeolocalization = {

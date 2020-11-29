@@ -6,7 +6,7 @@ module.exports = {
     app: [
       "core-js/stable/promise",
       "regenerator-runtime/runtime",
-      "./src/js/app.js",
+      "./src/app.js",
     ],
   },
   output: {

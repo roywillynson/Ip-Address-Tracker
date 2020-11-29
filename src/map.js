@@ -1,9 +1,17 @@
 // Configuracion
-const { attribution, accessToken, id } = require("./map.config");
+const { attribution, accessToken, id } = require("./config/map.config");
 
-//Varibles
-const map = new L.Map("mapa");
+// Varibles
+const map = new L.Map("mapa", { zoomControl: false });
 const marker = new L.Marker([0, 0]);
+// Marcador en el mapa
+const customIcon = new L.Icon({
+  iconUrl: "https://www.flaticon.com/svg/static/icons/svg/252/252025.svg",
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+  iconSize: [50, 50],
+  iconAnchor: [25, 50],
+});
 
 //Lat = latitude, lng = Longitud
 function initMap({ lat = 0, lng = 0 } = {}, zoom) {
@@ -24,15 +32,6 @@ function initMap({ lat = 0, lng = 0 } = {}, zoom) {
   map.setView([lat, lng], zoom);
   map.addLayer(layer);
 
-  // Marcador en el mapa
-  const customIcon = new L.Icon({
-    iconUrl: "https://www.flaticon.com/svg/static/icons/svg/252/252025.svg",
-    shadowUrl:
-      "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-    iconSize: [50, 50],
-    iconAnchor: [25, 50],
-  });
-
   const latlng = new L.LatLng(lat, lng);
 
   //Marcador
@@ -44,8 +43,7 @@ function initMap({ lat = 0, lng = 0 } = {}, zoom) {
 
 //Lat = latitude, lng = Longitud
 function changeMap({ lat, lng } = {}, zoom) {
-  if (!lat) return;
-  if (!lng) return;
+  if (!lat || !lng) return;
 
   // Modificar coordenada
   map.setView([lat, lng], zoom);
