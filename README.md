@@ -2,7 +2,8 @@
 
 ![Design preview for the IP Address Tracker coding challenge](./public/design/desktop-preview.jpg)
 
-# Build Proyect
+# Commands
 
-npm run dev
-npm start
+###npm run dev  
+###npm run build  
+###npm start
