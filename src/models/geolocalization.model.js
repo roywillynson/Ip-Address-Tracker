@@ -14,7 +14,6 @@
 
 class Geolocalization {
   constructor(ip, location, isp) {
-    console.log(ip);
     this.ip = ip;
     this.location = location;
     this.isp = isp;
@@ -28,7 +27,6 @@ class Geolocalization {
   // Get location in string
   getLocationString() {
     const { city, region, postalCode } = this.location;
-    console.log(this);
     return `${city} ${region}, ${postalCode}`;
   }
 
