@@ -1,5 +1,5 @@
 // Configuracion
-const { attribution, accessToken, id } = require("./config/map.config");
+const { attribution, accessToken, id, ZOOM } = require("./config/map.config");
 
 // Varibles
 const map = new L.Map("mapa", { zoomControl: false });
@@ -14,7 +14,7 @@ const customIcon = new L.Icon({
 });
 
 //Lat = latitude, lng = Longitud
-function initMap({ lat = 0, lng = 0 } = {}, zoom) {
+function initMap({ lat = 0, lng = 0 } = {}) {
   // Mostrar mapa
   const layer = new L.TileLayer(
     "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
@@ -29,7 +29,7 @@ function initMap({ lat = 0, lng = 0 } = {}, zoom) {
   );
 
   // Modificar coordenada
-  map.setView([lat, lng], zoom);
+  map.setView([lat, lng], ZOOM);
   map.addLayer(layer);
 
   const latlng = new L.LatLng(lat, lng);
@@ -42,11 +42,11 @@ function initMap({ lat = 0, lng = 0 } = {}, zoom) {
 }
 
 //Lat = latitude, lng = Longitud
-function changeMap({ lat, lng } = {}, zoom) {
+function changeMap({ lat, lng } = {}) {
   if (!lat || !lng) return;
 
   // Modificar coordenada
-  map.setView([lat, lng], zoom);
+  map.setView([lat, lng], ZOOM);
 
   // Marcador en el mapa
   const latlng = new L.LatLng(lat, lng);

@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     app: [
       "core-js/stable/promise",
+      "core-js/stable/object",
       "regenerator-runtime/runtime",
       "./src/app.js",
     ],

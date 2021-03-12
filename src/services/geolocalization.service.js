@@ -19,7 +19,6 @@ async function getMyGeolocalization() {
   try {
     let response = await axios.get();
 
-    console.log(response);
     return response.data;
   } catch (error) {
     console.log(error.message);

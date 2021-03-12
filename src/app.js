@@ -4,6 +4,7 @@ const {
   getMyGeolocalization,
   getGeolocalizationByIp,
 } = require("./services/geolocalization.service");
+const Geocalicalization = require("./models/geolocalization.model");
 
 const { changeMap, initMap } = require("./map");
 
@@ -27,26 +28,25 @@ async function init() {
 /********************************
  *      Funcionalidades
  *********************************/
+
+// Obtener mi geolocalizacion y mostrarla en el inicio de la app
 async function initGeolocalization() {
   // Traer mi ip
-  const { ip, location, isp } = await getMyGeolocalization();
+  const geolocalization = await getMyGeolocalization();
 
-  const { lat, lng, city, region, postalCode, timezone } = location; // Info de la location
+  // destructuring
+  const { ip, location, isp } = geolocalization;
 
-  // Objeto informacion ip
-  let geolocalization = {
-    ip,
-    location: `${city} ${region}, ${postalCode}`,
-    timezone: `UTC ${timezone}`,
-    isp,
-  };
+  // Objeto informacion de la ip
+  const newGeolocalization = new Geocalicalization(ip, location, isp);
 
   // Configurar el mapa con mi geolocalizacion
-  await initMap({ lat, lng }, 12);
+  await initMap(newGeolocalization.getCoordenada());
 
-  updateInfoGeolocalization(geolocalization);
+  updateInfoGeolocalization(newGeolocalization);
 }
 
+// Cambiar geolocalizacion a otra
 async function changeGeolocalization(e) {
   e.preventDefault();
   // Obtener valor del input
@@ -62,44 +62,33 @@ async function changeGeolocalization(e) {
     searchIPOrDomain
   );
 
-  if (newGeolocalization) {
-    await changeMap(newGeolocalization.ubicacion, 12);
+  await changeMap(newGeolocalization.getCoordenada());
 
-    updateInfoGeolocalization(newGeolocalization);
-  }
+  updateInfoGeolocalization(newGeolocalization);
 }
 
 // Actualizar la informacion de geolocalizacion
 function updateInfoGeolocalization(geolocalization) {
-  // Destructuring de la geolocalizacion
-  const { ip, location, timezone, isp } = geolocalization;
   // Reemplazar valores en pantalla
-  document.querySelector(".ip-address").textContent = ip;
-  document.querySelector(".location").textContent = location;
-  document.querySelector(".timezone").textContent = timezone;
-  document.querySelector(".isp").textContent = isp;
+
+  document.querySelector(".location").textContent =
+    geolocalization?.getLocationString() || "Ninguna";
+
+  document.querySelector(".timezone").textContent =
+    geolocalization?.getTimeZoneString() || "Ninguna";
+
+  document.querySelector(".isp").textContent =
+    geolocalization?.getISP() || "Ninguna";
+  document.querySelector(".ip-address").textContent =
+    geolocalization?.getIp() || "Ninguna";
 }
 
 // Buscar geolocalizacion por ip
 async function searchInfoGeolocalizationByIP(ipAddress = "") {
   //Obtener geolocalizacion
-  const geolocalizacion = await getGeolocalizationByIp(ipAddress);
+  const { ip, location, isp } = await getGeolocalizationByIp(ipAddress);
 
-  //Validar si no encontro la geolozalizacion
-  if (!geolocalizacion) return;
+  const geolocalization = new Geocalicalization(ip, location, isp);
 
-  const { ip, location, isp } = geolocalizacion;
-
-  const { lat, lng, city, region, postalCode, timezone } = location; // Info de la location
-
-  // Objeto informacion ip
-  let newGeolocalization = {
-    ip,
-    location: `${city} ${region}, ${postalCode}`,
-    timezone: `UTC ${timezone}`,
-    isp,
-    ubicacion: { lat, lng },
-  };
-
-  return newGeolocalization;
+  return geolocalization;
 }
