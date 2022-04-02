@@ -1,12 +1,12 @@
 // Configuracion
-const { attribution, accessToken, id, ZOOM } = require("./config/map.config");
+const config = require("./config/env.config");
 
 // Varibles
 const map = new L.Map("mapa", { zoomControl: false });
 const marker = new L.Marker([0, 0]);
 // Marcador en el mapa
 const customIcon = new L.Icon({
-  iconUrl: "https://www.flaticon.com/svg/static/icons/svg/252/252025.svg",
+  iconUrl: "/images/icon-marker.png",
   shadowUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
   iconSize: [50, 50],
@@ -15,24 +15,15 @@ const customIcon = new L.Icon({
 
 //Lat = latitude, lng = Longitud
 function initMap({ lat = 0, lng = 0 } = {}) {
+  const latlng = new L.LatLng(lat, lng);
   // Mostrar mapa
-  const layer = new L.TileLayer(
-    "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-    {
-      attribution,
-      maxZoom: 18,
-      id,
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken,
-    }
-  );
+  const layer = new L.TileLayer(config.map.tileLayer.url, {
+    ...config.map.tileLayer.options,
+  });
 
   // Modificar coordenada
-  map.setView([lat, lng], ZOOM);
+  map.setView(latlng, config.map.ZOOM);
   map.addLayer(layer);
-
-  const latlng = new L.LatLng(lat, lng);
 
   //Marcador
   marker.setIcon(customIcon);
@@ -45,11 +36,12 @@ function initMap({ lat = 0, lng = 0 } = {}) {
 function changeMap({ lat, lng } = {}) {
   if (!lat || !lng) return;
 
+  const latlng = new L.LatLng(lat, lng);
+
   // Modificar coordenada
-  map.setView([lat, lng], ZOOM);
+  map.setView(latlng, config.map.ZOOM);
 
   // Marcador en el mapa
-  const latlng = new L.LatLng(lat, lng);
   marker.setLatLng(latlng);
 }
 

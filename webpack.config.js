@@ -1,5 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const DotenvWebpackPlugin = require("dotenv-webpack");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -11,6 +14,7 @@ module.exports = {
     ],
   },
   output: {
+    publicPath: "/public",
     filename: "[name].bundle.js",
     path: path.join(__dirname, "/dist"),
   },
@@ -18,6 +22,14 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 9000,
+    proxy: {
+      "/api/": {
+        target: "https://geo.ipify.org",
+        pathRewrite: { "^/api/": "/api/" },
+        secure: false,
+        changeOrigin: true,
+      },
+    },
   },
   module: {
     rules: [
@@ -39,6 +51,7 @@ module.exports = {
     ],
   },
   optimization: {
+    minimizer: [new UglifyJsPlugin()],
     runtimeChunk: {
       name: "runtime",
     },
@@ -53,9 +66,16 @@ module.exports = {
     },
   },
   plugins: [
+    new DotenvWebpackPlugin({
+      path: path.resolve(process.cwd(), ".env"),
+      safe: true,
+    }),
+    new CopyWebpackPlugin({
+      patterns: [path.resolve(process.cwd(), "public")],
+    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./public/index.html",
+      template: path.resolve(process.cwd(), "public/index.html"),
     }),
   ],
 };
