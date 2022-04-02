@@ -1,3 +1,5 @@
 {
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+  "rewrites": [
+    { "source": "/api/:match*", "destination": "https://geo.ipify.org/api/:match*" }
+  ]
 }
