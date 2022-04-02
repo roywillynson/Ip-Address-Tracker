@@ -4,9 +4,9 @@
   "description": "![Design preview for the IP Address Tracker coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --w --mode production",
-    "dev": "webpack --w --mode development",
-    "server": "webpack-dev-server --mode production --open"
+    "build": "webpack watch --mode production",
+    "dev": "webpack watch --mode development",
+    "server": "webpack serve --mode production --node-env=production --open"
   },
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.1",
     "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^3.11.3"
   }
 }
