@@ -66,15 +66,15 @@ module.exports = {
   },
   plugins: [
     new DotenvWebpackPlugin({
-      path: path.resolve(process.cwd(), ".env"),
+      path: path.join(__dirname, ".env"),
       safe: true,
     }),
     new CopyWebpackPlugin({
-      patterns: [path.resolve(process.cwd(), "public")],
+      patterns: [path.join(__dirname, "public")],
     }),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: path.resolve(process.cwd(), "public/index.html"),
+      template: path.join(__dirname, "public/index.html"),
     }),
   ],
 };
