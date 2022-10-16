@@ -1,5 +1,5 @@
 # Frontend Mentor - IP Address Tracker
-## Advertencia por motivos de CORS este proyecto no puede subirse a un servidor.
+> Advertencia por motivos de CORS este proyecto no puede subirse a un servidor.
 
 # Previews
 ## Desktop
