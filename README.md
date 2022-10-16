@@ -2,8 +2,11 @@
 > Advertencia por motivos de CORS este proyecto no puede subirse a un servidor.
 
 # Previews
-## Desktop
+
+## Desktop 1
 ![Desktop preview for the IP Address Tracker coding challenge](./public/images/desktop-preview.jpg)
+
+## Desktop 1
 ![Desktop preview for the IP Address Tracker coding challenge 2](./public/images/desktop-preview-2.jpg)
 
 ## Mobile
