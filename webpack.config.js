@@ -5,17 +5,11 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
-  entry: {
-    app: [
-      "core-js/stable/promise",
-      "core-js/stable/object",
-      "regenerator-runtime/runtime",
-      "./src/app.js",
-    ],
-  },
+  entry: ["./src/app.js"],
   output: {
     filename: "[name].bundle.js",
     path: path.join(__dirname, "/dist"),
+    publicPath: "/",
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
@@ -33,10 +27,28 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         exclude: "/node_modules/",
         use: {
           loader: "babel-loader",
+          options: {
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  useBuiltIns: "entry",
+                  corejs: 3,
+                  modules: false,
+                  targets: {
+                    esmodules: true,
+                  },
+                },
+              ],
+            ],
+            plugins: [
+              ["@babel/plugin-transform-runtime", { regenerator: false }],
+            ],
+          },
         },
       },
       {

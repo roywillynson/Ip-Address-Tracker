@@ -22,7 +22,7 @@ body {
 }
 
 .search-container {
-  background-image: url(/public/images/pattern-bg.png);
+  background-image: url(/images/pattern-bg.png);
   background-size: cover;
   max-height: 300px;
 }

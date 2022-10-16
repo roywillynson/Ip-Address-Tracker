@@ -1,5 +1,5 @@
 // Configuracion
-const config = require("./config/env.config");
+import config from "./config/env/index";
 
 // Varibles
 const map = new L.Map("mapa", { zoomControl: false });
@@ -45,7 +45,4 @@ function changeMap({ lat, lng } = {}) {
   marker.setLatLng(latlng);
 }
 
-module.exports = {
-  changeMap,
-  initMap,
-};
+export { changeMap, initMap };

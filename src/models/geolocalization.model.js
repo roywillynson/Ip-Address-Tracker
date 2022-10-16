@@ -56,4 +56,4 @@ class Geolocalization {
   }
 }
 
-module.exports = Geolocalization;
+export default Geolocalization;

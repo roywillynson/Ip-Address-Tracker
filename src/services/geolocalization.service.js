@@ -1,4 +1,4 @@
-const axios = require("../config/axios.config");
+import axios from "../config/axios/index";
 
 // GET : Obtiene geolocalizacion por el ip proporcionado
 async function getGeolocalizationByIp(ip) {
@@ -30,7 +30,4 @@ async function getMyGeolocalization() {
   }
 }
 
-module.exports = {
-  getMyGeolocalization,
-  getGeolocalizationByIp,
-};
+export { getMyGeolocalization, getGeolocalizationByIp };

@@ -1,12 +1,10 @@
-import "./css/style.css";
-
-const {
+import {
   getMyGeolocalization,
   getGeolocalizationByIp,
-} = require("./services/geolocalization.service");
-const Geocalicalization = require("./models/geolocalization.model");
+} from "./services/geolocalization.service";
+import Geocalicalization from "./models/geolocalization.model";
 
-const { changeMap, initMap } = require("./map");
+import { changeMap, initMap } from "./map";
 
 /*****************************
  *      Event Listeners
@@ -36,6 +34,7 @@ async function initGeolocalization() {
 
   // destructuring
   const { ip, location, isp } = geolocalization;
+  console.log(ip, location, isp);
 
   // Objeto informacion de la ip
   const newGeolocalization = new Geocalicalization(ip, location, isp);
